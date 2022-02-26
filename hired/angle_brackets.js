@@ -1,18 +1,18 @@
 
 const solution = (angles) => {
-  let counter = 0;
-    let opennedTags = 0;
+  let countOpenNotClosed = 0;
+    let countClosedNotOpen = 0;
     for (const char of angles) {
       if (char === '>') {
-        if (counter === 0) {
-          opennedTags++;
+        if (countOpenNotClosed === 0) {
+          countClosedNotOpen++;
         } else {
-          counter--;
+          countOpenNotClosed--;
         }
       } else {
-        counter++;
+        countOpenNotClosed++;
       }
     }
-    return '<'.repeat(opennedTags) + angles + '>'.repeat(counter);
+    return '<'.repeat(countClosedNotOpen) + angles + '>'.repeat(countOpenNotClosed);
 };
 
